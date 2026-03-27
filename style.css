@@ -1,0 +1,471 @@
+:root {
+  --bg:          #0e0f13;
+  --bg-card:     #16181f;
+  --bg-hover:    #1e2029;
+  --border:      #2a2d38;
+  --border-glow: #3d4155;
+  --accent:      #6c8fff;
+  --accent-dim:  #3a52c4;
+  --accent-soft: rgba(108,143,255,.12);
+  --text-1:      #eef0f8;
+  --text-2:      #9499b0;
+  --text-3:      #5c6070;
+  --success:     #4caf87;
+  --danger:      #e05c6b;
+  --warning:     #f0a742;
+  --nav-h:       64px;
+  --radius:      10px;
+  --radius-sm:   6px;
+  --shadow:      0 4px 24px rgba(0,0,0,.45);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:   'Outfit', sans-serif;
+  --transition:  .22s ease;
+}
+
+/* ── Reset ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  height: var(--nav-h);
+  background: rgba(14,15,19,.95);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text-1);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.navbar-brand .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  gap: .25rem;
+  margin-left: auto;
+}
+
+.navbar-nav a {
+  display: block;
+  padding: .4rem .85rem;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.navbar-nav a:hover,
+.navbar-nav a.active {
+  color: var(--text-1);
+  background: var(--accent-soft);
+}
+
+.navbar-nav a.active {
+  color: var(--accent);
+}
+
+/* ============================================================
+   MAIN WRAPPER
+   ============================================================ */
+.main-wrapper {
+  min-height: calc(100vh - var(--nav-h));
+  padding: 2rem 1.25rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-sm {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   HEADINGS (h1, h2, etc) - আপনার existing পেজের জন্য
+   ============================================================ */
+h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-1);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+h1:not(:first-child) {
+  margin-top: 1rem;
+}
+
+/* ============================================================
+   LINKS (আপনার existing পেজের লিংকগুলোর জন্য)
+   ============================================================ */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+a:hover {
+  color: var(--accent-dim);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   FORMS (আপনার existing ফর্মগুলোর জন্য)
+   ============================================================ */
+form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  max-width: 500px;
+}
+
+input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .75rem 1rem;
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--text-1);
+  outline: none;
+  transition: all var(--transition);
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108,143,255,.18);
+}
+
+input::placeholder {
+  color: var(--text-3);
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: .75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: .95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(108,143,255,.3);
+}
+
+/* ফর্মের মধ্যে ব্র ট্যাগগুলোর জন্য spacing */
+br {
+  display: none;  /* ব্র ট্যাগ লুকিয়ে ফেলি */
+}
+
+/* ইনপুটের মধ্যে gap তৈরি করতে */
+input + input,
+input + button,
+button + button {
+  margin-top: 1rem;
+}
+
+/* ============================================================
+   HORIZONTAL RULE (hr)
+   ============================================================ */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ============================================================
+   SUCCESS MESSAGE PAGE
+   ============================================================ */
+.success-message {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.success-message h1 {
+  border-bottom: none;
+  color: var(--success);
+  font-size: 1.8rem;
+  display: block;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-3);
+}
+
+.site-footer a {
+  color: var(--accent);
+}
+/* ========== শুধু মোবাইল নেভিগেশন ফিক্স ========== */
+@media screen and (max-width: 600px) {
+    .navbar {
+        padding: 0 1rem;
+        position: relative;
+    }
+    
+    .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-left: auto;
+        z-index: 101;
+    }
+    
+    .hamburger-line {
+        width: 100%;
+        height: 2px;
+        background: var(--text-1);
+        transition: 0.2s;
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .navbar-nav {
+        position: fixed;
+        top: 64px;
+        left: -100%;
+        width: 100%;
+        background: var(--bg-card);
+        flex-direction: column;
+        padding: 1rem;
+        transition: left 0.3s;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin-left: 0;
+        gap: 0;
+        box-shadow: var(--shadow);
+    }
+    
+    .navbar-nav.active {
+        left: 0;
+    }
+    
+    .navbar-nav a {
+        width: 100%;
+        text-align: left;
+        padding: 0.8rem 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .navbar-nav a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Logout Modal Styles - একদম শেষে যোগ করুন */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+}
+
+.modal-body {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.modal-body p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Outfit', sans-serif;
+}
+
+.modal-body .user-name {
+    font-weight: 600;
+    color: #667eea;
+    background: #f0f4ff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.modal-footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #edf2f7;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.modal-footer .btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    flex: 1;
+    max-width: 140px;
+}
+
+.modal-footer .cancel-btn {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.modal-footer .cancel-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+.modal-footer .logout-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.modal-footer .logout-btn:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .modal-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .modal-footer .btn {
+        max-width: 100%;
+        width: 100%;
+    }
+}
